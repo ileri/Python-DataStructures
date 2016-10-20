@@ -10,22 +10,26 @@ class Kesir:
         yenipay = self.pay * diger.payda + \
             self.payda * diger.pay
         yenipayda = self.payda * diger.payda
-        return Kesir(yenipay,yenipayda)
+        return Kesir.sadelestir(Kesir(yenipay,yenipayda))
 
     def __sub__(self,diger):
-        return self+Kesir(-1,1)*diger
+        return Kesir.sadelestir(self+Kesir(-1,1)*diger)
 
     def __mul__(self,diger):
-        return Kesir(self.pay*diger.pay,self.payda*diger.payda)
+        return Kesir.sadelestir(Kesir\
+            (self.pay*diger.pay,self.payda*diger.payda))
 
     def __truediv__(self,diger):
-        return Kesir(self.pay*diger.payda,self.payda*diger.pay)
+        return Kesir.sadelestir\
+            (Kesir(self.pay*diger.payda,self.payda*diger.pay))
 
     def __pow__(self,diger):
         if type(diger) == type(self):
-            return Kesir(pow(self.pay,Kesir.floatyap(diger)),pow(self.payda,Kesir.floatyap(diger)))
+            return Kesir.sadelestir(Kesir(pow(self.pay,Kesir.floatyap(diger)),\
+                pow(self.payda,Kesir.floatyap(diger))))
         else:
-            return Kesir(pow(self.pay,diger),pow(self.payda,diger))
+            return Kesir.sadelestir(Kesir(pow(self.pay,diger),\
+                pow(self.payda,diger)))
 
     def __lt__(self,diger):
         return Kesir.floatyap(self)<Kesir.floatyap(diger)
@@ -47,3 +51,18 @@ class Kesir:
 
     def floatyap(self):
         return self.pay/self.payda
+
+    def sadelestir(self):
+        if Kesir.EBOB(self.pay,self.payda)>1:
+            ebob = Kesir.EBOB(self.pay,self.payda)
+            return Kesir(self.pay/ebob,self.payda/ebob)
+        else:
+            return Kesir(self.pay,self.payda)
+
+    def EBOB(a,b):
+        while a%b != 0:
+            eski_a = a
+            eski_b = b
+            a = eski_b
+            b = eski_a%eski_b
+        return b
