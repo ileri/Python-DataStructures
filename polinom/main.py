@@ -1,10 +1,14 @@
 from Polinom import Polinom
 
-a = Polinom(1,6,9,2,32,23,52,4,44)
-b = Polinom(2,3,4,5)
+a = Polinom(1,2,3,4)
+b = Polinom(1,2,3,4)
 c = a + b
 d = a - b
 e = a * b
-print(c)
-print(d)
-print(e)
+f = a - 5
+print(a+b)
+print(a+5)
+print(a-b)
+print(a-5)
+print(a*b)
+print(a*5)

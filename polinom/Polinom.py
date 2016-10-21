@@ -45,35 +45,31 @@ class Polinom:
 
     def __sub__(self,diger):
         if type(diger) == type(0): #Integer ise
-            sonuc = deepcopy(self)
-            sonuc.katsayilar[0] -= diger
-            return sonuc
+            return self+(-1)*diger
         elif type(diger) == type(self):
-            if len(self.katsayilar) >= len(diger.katsayilar):
-                buyuk = deepcopy(self)
-                kucuk = deepcopy(diger)
-            else:
-                buyuk = deepcopy(diger)
-                kucuk = deepcopy(self)
-            for i in range(len(kucuk.katsayilar)):
-                buyuk.katsayilar[i] -= kucuk.katsayilar[i]
-            return buyuk
+            eski = []
+            i = 0
+            for _ in range(len(diger.katsayilar)):
+                eski.append(0)
+            for kat in diger.katsayilar:
+                eski[i] = -kat
+                i+=1
+            return self+Polinom(*eski)
         else:
             print("Polinomlar sadece bir başka polinom \
                 yada tamsayı ile eksiltilebilir.")
             return self
 
     def __mul__(self,diger):
-        if (type(diger) == type(0)) or (type(diger) == type(0.5)):
+        if (type(diger) == type(0)):
              sonuc = deepcopy(self)
              for i in range(len(sonuc.katsayilar)):
-                 sonuc.katsayilar[i] /= diger
+                 sonuc.katsayilar[i] *= diger
              return sonuc
         elif type(diger) == type(self):
             carpilmis = []
             for _ in range(len(self.katsayilar)+len(diger.katsayilar)-1):
                 carpilmis.append(0)
-            print(carpilmis)
             for i in range(len(self.katsayilar)):
                 for j in range(len(diger.katsayilar)):
                     carpilmis[i+j] += self.katsayilar[i] * diger.katsayilar[j]
