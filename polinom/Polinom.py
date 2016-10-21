@@ -62,3 +62,23 @@ class Polinom:
             print("Polinomlar sadece bir başka polinom \
                 yada tamsayı ile eksiltilebilir.")
             return self
+
+    def __mul__(self,diger):
+        if (type(diger) == type(0)) or (type(diger) == type(0.5)):
+             sonuc = deepcopy(self)
+             for i in range(len(sonuc.katsayilar)):
+                 sonuc.katsayilar[i] /= diger
+             return sonuc
+        elif type(diger) == type(self):
+            carpilmis = []
+            for _ in range(len(self.katsayilar)+len(diger.katsayilar)-1):
+                carpilmis.append(0)
+            print(carpilmis)
+            for i in range(len(self.katsayilar)):
+                for j in range(len(diger.katsayilar)):
+                    carpilmis[i+j] += self.katsayilar[i] * diger.katsayilar[j]
+            return Polinom(*carpilmis)
+        else:
+            print("Polinomlar sadece bir başka polinom \
+                yada tamsayı ile çarpılabilir.")
+            return self
