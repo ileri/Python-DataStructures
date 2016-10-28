@@ -2,7 +2,7 @@
 BANKNOTLAR=[0,0,0,0,0,0] #[5,10,20,50,100,200]
 def BanknotSay(para):
     if para%5 !=0:
-        print("5 Tl ve Katlarını yazabilirsiniz.")
+        print("ATM'nin sadece banknot çıkışı olduğu için 5 TL ve katlarını verebiliyoruz.")
         exit()
     if para >= 200:
         BANKNOTLAR[5] = int(para/200)
@@ -36,4 +36,4 @@ print(str(BANKNOTLAR[3])+" Tane 50 Tl lik Banknot")
 print(str(BANKNOTLAR[2])+" Tane 20 Tl lik Banknot")
 print(str(BANKNOTLAR[1])+" Tane 10 Tl lik Banknot")
 print(str(BANKNOTLAR[0])+" Tane 5 Tl lik Banknot")
-print(BANKNOTLAR)
+
