@@ -23,7 +23,13 @@ def BanknotSay(para):
         BANKNOTLAR[0] = int(para/5)
         para %= 5
     return para
-BanknotSay(385)
+try:
+	miktar = int(input("Çekmek istediğiniz miktarı giriniz (5 Tl ve katları):"))
+except ValueError:
+	print("Lütfen sadece rakamlardan oluşan bir sayı giriniz!")
+	exit()
+
+BanknotSay(miktar)
 print(str(BANKNOTLAR[5])+" Tane 200 Tl lik Banknot")
 print(str(BANKNOTLAR[4])+" Tane 100 Tl lik Banknot")
 print(str(BANKNOTLAR[3])+" Tane 50 Tl lik Banknot")
