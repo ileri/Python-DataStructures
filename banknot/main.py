@@ -24,4 +24,10 @@ def BanknotSay(para):
         para %= 5
     return para
 BanknotSay(385)
+print(str(BANKNOTLAR[5])+" Tane 200 Tl lik Banknot")
+print(str(BANKNOTLAR[4])+" Tane 100 Tl lik Banknot")
+print(str(BANKNOTLAR[3])+" Tane 50 Tl lik Banknot")
+print(str(BANKNOTLAR[2])+" Tane 20 Tl lik Banknot")
+print(str(BANKNOTLAR[1])+" Tane 10 Tl lik Banknot")
+print(str(BANKNOTLAR[0])+" Tane 5 Tl lik Banknot")
 print(BANKNOTLAR)
